@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FormationCreateDlg" widgetVar="FormationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFormationTitle}">
+            <h:form id="FormationCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{formationController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFormationLabel_idF}" for="idF" />
+                        <p:inputText id="idF" value="#{formationController.selected.idF}" title="#{bundle.CreateFormationTitle_idF}" required="true" requiredMessage="#{bundle.CreateFormationRequiredMessage_idF}"/>
+                        <p:outputLabel value="#{bundle.CreateFormationLabel_libelleF}" for="libelleF" />
+                        <p:inputText id="libelleF" value="#{formationController.selected.libelleF}" title="#{bundle.CreateFormationTitle_libelleF}" />
+                        <p:outputLabel value="#{bundle.CreateFormationLabel_rate}" for="rate" />
+                        <p:inputText id="rate" value="#{formationController.selected.rate}" title="#{bundle.CreateFormationTitle_rate}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{formationController.create}" value="#{bundle.Save}" update="display,:FormationListForm:datalist,:growl" oncomplete="handleSubmit(args,'FormationCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FormationCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

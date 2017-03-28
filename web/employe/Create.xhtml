@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmployeCreateDlg" widgetVar="EmployeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEmployeTitle}">
+            <h:form id="EmployeCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{employeController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEmployeLabel_matricule}" for="matricule" />
+                        <p:inputText id="matricule" value="#{employeController.selected.matricule}" title="#{bundle.CreateEmployeTitle_matricule}" required="true" requiredMessage="#{bundle.CreateEmployeRequiredMessage_matricule}"/>
+                        <p:outputLabel value="#{bundle.CreateEmployeLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{employeController.selected.nom}" title="#{bundle.CreateEmployeTitle_nom}" required="true" requiredMessage="#{bundle.CreateEmployeRequiredMessage_nom}"/>
+                        <p:outputLabel value="#{bundle.CreateEmployeLabel_poste}" for="poste" />
+                        <p:inputText id="poste" value="#{employeController.selected.poste}" title="#{bundle.CreateEmployeTitle_poste}" required="true" requiredMessage="#{bundle.CreateEmployeRequiredMessage_poste}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{employeController.create}" value="#{bundle.Save}" update="display,:EmployeListForm:datalist,:growl" oncomplete="handleSubmit(args,'EmployeCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EmployeCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
