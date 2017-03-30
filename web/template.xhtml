@@ -29,13 +29,15 @@
                                 <p:menuitem value="List" outcome="/formation/List.xhtml" />
                             </p:submenu>
                         </p:submenu>
+                        <p:submenu label="#{login.uname}">
+                            <p:menuitem value="Home" outcome="/formation/Home.xhtml" />
+                        </p:submenu>
+                      
                         <f:facet name="options">
                             <p:inputText style="margin-right:20px" placeholder="Search"/>
-                        <p:commandButton action="#{login.logout}" value="Logout" icon="ui-icon-extlink"  ajax="false"></p:commandButton>
+                            <p:commandButton action="#{login.logout}" value="Logout" icon="ui-icon-extlink"  ajax="false"></p:commandButton>
                         </f:facet>
-                        <p:submenu style="margin-right" label="#{login.uname}">
-                                <p:menuitem value="Home" outcome="/formation/Home.xhtml" />
-                            </p:submenu>
+
                     </p:menubar>
                 </h:form>
             </p:layoutUnit>

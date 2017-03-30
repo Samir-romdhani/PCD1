@@ -56,7 +56,7 @@ public class Login implements Serializable {
             HttpSession session = Util.getSession();
             session.setAttribute("username", uname);
  
-            return "template.xhtml";
+            return "template";
         } else {
  
             FacesContext.getCurrentInstance().addMessage(
@@ -65,13 +65,16 @@ public class Login implements Serializable {
                     "Invalid Login!",
                     "Please Try Again!"));
  
-            return "login.xhtml";
+            return "login";
         }
     }
  
     public String logout() {
       HttpSession session = Util.getSession();
       session.invalidate();
-      return "login.xhtml";
+      return "login";
    }
+    
+    
+ 
 }
